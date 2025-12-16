@@ -1,5 +1,5 @@
 # Agentic Assistant for DSAI Assignment
-.
+- Add your api key in executer.py and planner.py
 
 ## Tech Stack
 - FastAPI
