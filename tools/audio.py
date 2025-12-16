@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 def transcribe_audio(audio_path: str) -> tuple[str, float]:
     """
-    Transcribe audio file to text using Google Speech Recognition
+    audio file to text using Google Speech Recognition
     
     Args:
         audio_path: Path to audio file (MP3/WAV/M4A)
@@ -25,7 +25,7 @@ def transcribe_audio(audio_path: str) -> tuple[str, float]:
             audio = AudioSegment.from_file(audio_path)
             wav_path = audio_path.replace(file_ext, '_temp.wav')
             audio.export(wav_path, format='wav')
-            duration = len(audio) / 1000.0  # Convert to seconds
+            duration = len(audio) / 1000.0 
             audio_path = wav_path
         else:
             audio = AudioSegment.from_wav(audio_path)

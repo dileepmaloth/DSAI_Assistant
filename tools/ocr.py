@@ -7,7 +7,7 @@ reader = easyocr.Reader(['en'], gpu=False)
 
 def ocr_image(image_path: str) -> tuple[str, float]:
     """
-    Extract text from image using EasyOCR
+    Text from image using EasyOCR
     
     Args:
         image_path: Path to image file

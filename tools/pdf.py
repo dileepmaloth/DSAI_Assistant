@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 def extract_pdf(pdf_path: str) -> tuple[str, Optional[float]]:
     """
-    Extract text from PDF, with OCR fallback for scanned PDFs
+    text from PDF, with OCR fallback for PDFs
     
     Args:
         pdf_path: Path to PDF file

@@ -1,6 +1,5 @@
-# Agentic Assistant
-
-This is an agentic AI assistant built as part of an assignment.
+# Agentic Assistant for DSAI Assignment
+.
 
 ## Tech Stack
 - FastAPI
@@ -20,8 +19,7 @@ uvicorn api.main:app --reload
 streamlit run ui/app.py 
 
 ## Demo Video
-See the demo video in the repository.
-
+See the demo video in the repository in demo folder
 
 ## Project Structure
 
@@ -41,6 +39,7 @@ agentic_app/
 │   └── main.py          # FastAPI endpoints
 ├── ui/
 │   └── app.py           # Streamlit interface
+├── demo                 #demo video
 ├── requirements.txt
 └── README.md
 ```

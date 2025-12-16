@@ -5,7 +5,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 def extract_video_id(text: str) -> str | None:
-    """Extract YouTube video ID from URL or text"""
     patterns = [
         r'(?:youtube\.com\/watch\?v=|youtu\.be\/)([a-zA-Z0-9_-]{11})',
         r'(?:youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})',

@@ -6,14 +6,13 @@ logger = logging.getLogger(__name__)
 
 llm = ChatOpenAI(
     base_url="https://openrouter.ai/api/v1",
-    openai_api_key="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",
+    openai_api_key="********************************************************************ADD YOURS*****************************************************************",
     model="amazon/nova-2-lite-v1:free",
-    temperature=0.8
+    temperature=0.7
 )
 
 
 def summarize(text: str) -> str:
-    """Generate 1-line, 3 bullets, and 5-sentence summary"""
     prompt = f"""Provide a summary in exactly this format:
 
 **One-line Summary:**
@@ -33,7 +32,6 @@ Text to summarize:
     return llm.invoke(prompt).content
 
 def sentiment_analysis(text: str) -> str:
-    """Analyze sentiment with label, confidence, and justification"""
     prompt = f"""Analyze the sentiment of this text.
 
 Return in this format:
@@ -47,7 +45,6 @@ Text:
     return llm.invoke(prompt).content
 
 def explain_code(text: str) -> str:
-    """Explain code, detect bugs, mention time complexity"""
     prompt = f"""Analyze this code and provide:
 
 1. **What it does:** [clear explanation]
@@ -61,13 +58,10 @@ Code:
     return llm.invoke(prompt).content
 
 def conversational(text: str) -> str:
-    """Handle general conversational queries"""
     return llm.invoke(text).content
 
 def execute(state):
     """
-    Executor agent that performs the identified task
-    
     Returns updated state with result
     """
     text = state.get("extracted_text") or state.get("raw_input", "")
@@ -101,7 +95,7 @@ def execute(state):
                 output = f"**Extracted Text:**\n\n{text}"
                 
         else:
-            # Default to conversational
+
             output = conversational(text)
         
         return {

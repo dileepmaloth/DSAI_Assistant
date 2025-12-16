@@ -11,4 +11,4 @@ class AgentState(TypedDict):
     result: Optional[str]
     logs: List[str]
     ocr_confidence: Optional[float]
-    duration: Optional[float]  # For audio files
+    duration: Optional[float]  

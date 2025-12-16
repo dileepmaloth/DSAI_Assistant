@@ -4,13 +4,9 @@ from agent.planner import plan
 from agent.executor import execute
 
 def followup(state):
-    """
-    Generate a follow-up question when intent is ambiguous
-    """
     extracted = state.get("extracted_text", "")
     raw = state.get("raw_input", "")
     
-    # Craft specific follow-up based on context
     if extracted and not raw:
         question = "I've extracted the text. What would you like me to do with it? (summarize, analyze sentiment, explain if it's code, etc.)"
     elif "code" in extracted.lower() or "def " in extracted or "function" in extracted.lower():
@@ -24,20 +20,16 @@ def followup(state):
         "logs": state["logs"] + ["Follow-up question asked"]
     }
 
-# Build the graph
+
 def create_agent():
-    """Create and compile the agent graph"""
     graph = StateGraph(AgentState)
     
-    # Add nodes
     graph.add_node("plan", plan)
     graph.add_node("execute", execute)
     graph.add_node("followup", followup)
     
-    # Set entry point
     graph.set_entry_point("plan")
     
-    # Add conditional edges from planner
     def route_after_plan(state):
         if state.get("ambiguity"):
             return "followup"
@@ -52,11 +44,10 @@ def create_agent():
         }
     )
     
-    # Set finish points
     graph.add_edge("execute", END)
     graph.add_edge("followup", END)
     
     return graph.compile()
 
-# Create the agent instance
+
 agent = create_agent()

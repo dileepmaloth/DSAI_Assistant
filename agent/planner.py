@@ -7,23 +7,20 @@ logger = logging.getLogger(__name__)
 
 llm = ChatOpenAI(
     base_url="https://openrouter.ai/api/v1",
-    openai_api_key="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",
+    openai_api_key="********************************************************************ADD YOURS*****************************************************************",
     model="amazon/nova-2-lite-v1:free",
-    temperature=0.8
+    temperature=0.7
 )
 
 
 def plan(state):
     """
-    Planner agent that determines user intent and constraints
-    
     Returns updated state with intent and ambiguity flag
     """
     raw_input = state.get("raw_input", "")
     extracted_text = state.get("extracted_text")
     input_type = state.get("input_type", "text")
     
-    # Prepare context for planner
     context = f"Input Type: {input_type}\n"
     if extracted_text:
         context += f"Extracted Content: {extracted_text[:500]}...\n"

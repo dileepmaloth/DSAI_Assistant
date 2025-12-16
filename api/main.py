@@ -8,13 +8,11 @@ import os
 import logging
 from typing import Optional
 
-# Setup logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-app = FastAPI(title="Agentic Assistant API")
+app = FastAPI(title="DSAI_API")
 
-# Enable CORS for Streamlit
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -37,7 +35,6 @@ async def run_agent(
     Accepts text and/or file uploads, processes them, and returns result
     """
     try:
-        # Initialize state
         state = {
             "raw_input": text or "",
             "extracted_text": None,
@@ -52,11 +49,10 @@ async def run_agent(
             "duration": None
         }
         
-        # Handle file upload
         if file:
             file_path = os.path.join(UPLOAD_DIR, file.filename)
             
-            # Save file
+            
             with open(file_path, "wb") as f:
                 content = await file.read()
                 f.write(content)
@@ -66,7 +62,7 @@ async def run_agent(
             
             logger.info(f"Processing file: {file.filename}")
             
-            # Process based on file type
+            
             if file_ext in ['.jpg', '.jpeg', '.png']:
                 state["input_type"] = "image"
                 extracted, confidence = ocr_image(file_path)
@@ -97,17 +93,17 @@ async def run_agent(
                     "logs": ["File type not supported"]
                 }
             
-            # Cleanup
+         
             try:
                 os.remove(file_path)
             except:
                 pass
         
-        # Run agent
+      
         logger.info("Running agent...")
         result_state = agent.invoke(state)
         
-        # Format response
+  
         response = {
             "input_type": result_state.get("input_type"),
             "extracted_text": result_state.get("extracted_text"),
@@ -129,7 +125,7 @@ async def run_agent(
 
 @app.get("/")
 async def root():
-    return {"message": "Agentic Assistant API is running"}
+    return {"message": "DSAI_API is running"}
 
 @app.get("/health")
 async def health():
