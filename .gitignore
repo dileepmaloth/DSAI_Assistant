@@ -1,0 +1,17 @@
+# python
+__pycache__/
+*.pyc
+.env
+
+# virtual environment
+dsaienv/
+venv/
+
+# streamlit
+.streamlit/
+
+# uploads
+uploads/
+
+# system
+.DS_Store

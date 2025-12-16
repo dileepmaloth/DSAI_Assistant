@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+python-multipart
+langchain
+langchain-openai
+langgraph
+httpx==0.27.2 
+openai
+streamlit
+PyMuPDF
+pydub
+SpeechRecognition
+easyocr
+python-dotenv
+requests
+youtube-transcript-api
+pytest
